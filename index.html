@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <meta name="theme-color" content="#007bff">
+
+    <link rel="manifest" href="manifest.json">
+
+    <title>Calculadora de Preço</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+</head>
+<body>
+
+<div class="container">
+    
+    <header>
+        <h1>Calculadora de Preço</h1>
+        <p>Calcule ou compare o custo-benefício dos seus ingredientes.</p>
+    </header>
+
+    <nav class="tab-nav">
+        <button class="tab-link active" data-tab="calculator-view">
+            Simples
+        </button>
+        <button class="tab-link" data-tab="comparator-view">
+            Comparador
+        </button>
+    </nav>
+
+    <div id="calculator-view" class="tab-content active">
+        
+        <form id="simple-price-form" class="card">
+            
+            <div class="form-group">
+                <label for="simple-item-name">Nome do Ingrediente (Opcional)</label>
+                <input type="text" id="simple-item-name" placeholder="Ex: Chocolate em barra">
+            </div>
+
+            <div class="form-group">
+                <label for="simple-total-price">Valor Total (R$)</label>
+                <input type="number" id="simple-total-price" placeholder="Ex: 37,00" step="0.01" required>
+            </div>
+
+            <div class="form-group">
+                <label for="simple-total-weight">Peso / Volume Total</label> <input type="number" id="simple-total-weight" placeholder="Ex: 1" step="0.01" required>
+            </div>
+
+            <div class="form-group">
+                <label for="simple-weight-unit">Unidade de Medida</label>
+                <select id="simple-weight-unit">
+                    <option value="kg">Quilogramas (kg)</option>
+                    <option value="g">Gramas (g)</option>
+                    <option value="l">Litros (L)</option>
+                    <option value="ml">Mililitros (ml)</option>
+                </select>
+            </div>
+
+            <button type="submit" class="btn-calculate">Calcular</button>
+        </form>
+
+        <div id="simple-results-card" class="card" style="display: none;">
+            <h2>Resultados</h2>
+            <div class="result-item">
+                <span>Preço por <span id="base-unit-label">Grama</span>:</span>
+                <strong id="simple-price-per-gram"></strong>
+            </div>
+            
+            <hr> 
+
+            <div class="form-group">
+                <label for="simple-custom-amount">Calcular custo para:</label>
+                <div class="custom-calc-input">
+                    <input type="number" id="simple-custom-amount" placeholder="100">
+                    <span id="custom-unit-label">gramas</span>
+                </div>
+            </div>
+
+            <div id="simple-custom-result" class="result-item" style="display: none;">
+                <span>Custo para <span id="custom-amount-display">100</span><span id="custom-result-unit-label">g</span>:</span>
+                <strong id="simple-custom-cost"></strong>
+            </div>
+            
+            <button id="save-history-btn" class="btn-secondary">Salvar no Histórico</button>
+
+        </div>
+
+        <div id="history-card" class="card" style="display: none;">
+            <h2>Histórico Recente</h2>
+            <ul id="history-list"></ul>
+            <button id="clear-history" class="btn-clear">Limpar Histórico</button>
+        </div>
+    </div>
+
+    <div id="comparator-view" class="tab-content">
+        
+        <form id="compare-form">
+            <div class="product-card" id="card-a">
+                <h2>Produto A</h2>
+                <div class="form-group">
+                    <label for="price-a">Valor Total (R$)</label>
+                    <input type="number" id="price-a" placeholder="Ex: 37,00" step="0.01">
+                </div>
+                <div class="form-group">
+                    <label for="weight-a">Peso / Volume</label> <input type="number" id="weight-a" placeholder="Ex: 1" step="0.01">
+                </div>
+                <div class="form-group">
+                    <label for="unit-a">Unidade</label>
+                    <select id="unit-a">
+                        <option value="kg">Quilogramas (kg)</option>
+                        <option value="g">Gramas (g)</option>
+                        <option value="l">Litros (L)</option>
+                        <option value="ml">Mililitros (ml)</option>
+                    </select>
+                </div>
+                <div class="result-display" id="result-a" style="display: none;">
+                    <span>Preço/<span id="unit-label-a">g</span>:</span>
+                    <strong id="price-per-gram-a"></strong>
+                </div>
+            </div>
+            
+            <div class="vs-divider">VS</div>
+
+            <div class="product-card" id="card-b">
+                <h2>Produto B</h2>
+                <div class="form-group">
+                    <label for="price-b">Valor Total (R$)</label>
+                    <input type="number" id="price-b" placeholder="Ex: 12,00" step="0.01">
+                </div>
+                <div class="form-group">
+                    <label for="weight-b">Peso / Volume</label> <input type="number" id="weight-b" placeholder="Ex: 500" step="0.01">
+                </div>
+                <div class="form-group">
+                    <label for="unit-b">Unidade</label>
+                    <select id="unit-b">
+                        <option value="kg">Quilogramas (kg)</option>
+                        <option value="g" selected>Gramas (g)</option>
+                        <option value="l">Litros (L)</option>
+                        <option value="ml">Mililitros (ml)</option>
+                    </select>
+                </div>
+                <div class="result-display" id="result-b" style="display: none;">
+                    <span>Preço/<span id="unit-label-b">g</span>:</span>
+                    <strong id="price-per-gram-b"></strong>
+                </div>
+            </div>
+
+            <button type="submit" class="btn-calculate">Comparar</button>
+        </form>
+        
+    </div>
+
+</div>
+
+</body>
+</html>

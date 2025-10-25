@@ -1,0 +1,286 @@
+/* Configurações Globais */
+:root {
+    --primary-color: #007bff;
+    --secondary-color: #28a745;
+    --light-gray: #f4f7f6;
+    --dark-text: #333;
+    --light-text: #555;
+    --border-color: #e0e0e0;
+    --card-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    background-color: var(--light-gray);
+    color: var(--dark-text);
+    line-height: 1.6;
+}
+.container {
+    max-width: 420px;
+    margin: 20px auto;
+    padding: 0 15px;
+}
+header {
+    text-align: center;
+    margin-bottom: 20px;
+}
+header h1 {
+    color: var(--primary-color);
+    margin-bottom: 4px;
+}
+header p {
+    font-size: 1rem;
+    color: var(--light-text);
+}
+
+/* --- NOVO: Estilo das Abas --- */
+.tab-nav {
+    display: flex;
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: var(--card-shadow);
+    padding: 5px;
+    margin-bottom: 20px;
+}
+.tab-link {
+    flex: 1; /* Faz os botões ocuparem espaço igual */
+    padding: 12px 10px;
+    border: none;
+    background: transparent;
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--primary-color);
+    cursor: pointer;
+    border-radius: 6px;
+    transition: all 0.3s ease;
+}
+.tab-link.active {
+    background: var(--primary-color);
+    color: #fff;
+    box-shadow: 0 2px 5px rgba(0, 123, 255, 0.3);
+}
+
+/* --- NOVO: Controle de Conteúdo das Abas --- */
+.tab-content {
+    display: none; /* Esconde por padrão */
+}
+.tab-content.active {
+    display: block; /* Mostra a aba ativa */
+}
+
+/* --- Estilos da Calculadora Simples --- */
+.card {
+    background: #ffffff;
+    border-radius: 8px;
+    box-shadow: var(--card-shadow);
+    padding: 25px;
+    margin-bottom: 20px;
+}
+.result-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 1.1rem;
+    margin: 10px 0;
+}
+.result-item span { color: var(--light-text); }
+.result-item strong { color: var(--primary-color); font-size: 1.3rem; }
+#simple-custom-result strong { color: var(--secondary-color); }
+hr {
+    border: 0;
+    height: 1px;
+    background: var(--border-color);
+    margin: 20px 0;
+}
+.custom-calc-input { display: flex; align-items: center; }
+.custom-calc-input input { flex: 1; border-radius: 4px 0 0 4px; }
+.custom-calc-input span {
+    padding: 12px;
+    background: var(--light-gray);
+    border: 1px solid var(--border-color);
+    border-left: none;
+    border-radius: 0 4px 4px 0;
+    color: var(--light-text);
+}
+
+/* --- Estilos do Comparador --- */
+.vs-divider {
+    text-align: center;
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: var(--primary-color);
+    margin: 10px 0;
+}
+.product-card {
+    background: #ffffff;
+    border-radius: 8px;
+    box-shadow: var(--card-shadow);
+    padding: 20px;
+    margin-bottom: 15px;
+    border: 2px solid transparent;
+    transition: all 0.3s ease;
+}
+.product-card h2 {
+    text-align: center;
+    margin-bottom: 15px;
+    color: var(--light-text);
+}
+.product-card.best-deal {
+    border-color: var(--secondary-color);
+    box-shadow: 0 4px 15px rgba(40, 167, 69, 0.3);
+}
+.product-card.best-deal h2 {
+    color: var(--secondary-color);
+    font-weight: 700;
+}
+.result-display {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 1.1rem;
+    margin-top: 15px;
+    padding-top: 15px;
+    border-top: 1px dashed var(--border-color);
+}
+.result-display span { color: var(--light-text); font-weight: 600; }
+.result-display strong { color: var(--dark-text); font-size: 1.3rem; }
+.best-deal .result-display strong { color: var(--secondary-color); font-weight: 700; }
+
+/* --- Estilos Gerais de Formulário (para ambos) --- */
+.form-group { margin-bottom: 18px; }
+.form-group label {
+    display: block;
+    font-weight: 600;
+    margin-bottom: 6px;
+    font-size: 0.9rem;
+}
+.form-group input[type="number"],
+.form-group input[type="text"],
+.form-group select {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    font-size: 1rem;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+}
+.form-group select {
+    background-image: url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%23007bff%22%20d%3D%22M287%2069.4a17.6%2017.6%200%200%200-13-5.4H18.4c-5%200-9.3%201.8-12.9%205.4A17.6%2017.6%200%200%200%200%2082.2c0%205%201.8%209.3%205.4%2012.9l128%20127.9c3.6%203.6%207.8%205.4%2012.8%205.4s9.2-1.8%2012.8-5.4L287%2095c3.5-3.5%205.4-7.8%205.4-12.8%200-5-1.9-9.2-5.5-12.8z%22%2F%3E%3C%2Fsvg%3E');
+    background-repeat: no-repeat;
+    background-position: right 12px center;
+    background-size: 10px;
+}
+.btn-calculate {
+    width: 100%;
+    padding: 14px;
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: #fff;
+    background-color: var(--primary-color);
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+    margin-top: 10px;
+}
+.btn-calculate:hover { background-color: #0056b3; }
+
+/* NOVO Botão Secundário (Salvar) */
+.btn-secondary {
+    width: 100%;
+    padding: 14px;
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: #fff;
+    background-color: var(--secondary-color); /* Verde */
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+    margin-top: 20px; /* Espaçamento acima do botão */
+}
+
+.btn-secondary:hover {
+    background-color: #218838; /* Verde mais escuro no hover */
+}
+
+/* --- NOVOS Estilos do Card de Histórico --- */
+#history-card h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: var(--dark-text);
+}
+
+#history-list {
+    list-style: none;
+    padding: 0;
+    margin-bottom: 20px;
+    max-height: 300px; /* Limita a altura em telas pequenas */
+    overflow-y: auto;  /* Adiciona scroll se a lista for longa */
+}
+
+#history-list li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 5px;
+    border-bottom: 1px dashed var(--border-color);
+}
+
+#history-list li:last-child {
+    border-bottom: none;
+}
+
+#history-list .history-item-details {
+    flex: 1;
+    margin-right: 10px;
+}
+
+#history-list .history-item-details strong {
+    display: block; /* Faz o nome ficar na linha de cima */
+    font-size: 1rem;
+    color: var(--dark-text);
+    word-break: break-word; /* Quebra nomes longos */
+}
+
+#history-list .history-custom-cost {
+    display: block; /* Ficará abaixo da descrição */
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--secondary-color); /* Destaque em verde */
+    margin-top: 4px;
+}
+
+#history-list .history-item-details span {
+    font-size: 0.85rem;
+    color: var(--light-text);
+}
+
+#history-list .history-item-price {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--primary-color);
+    min-width: 100px; /* Ajuda a alinhar os preços à direita */
+    text-align: right;
+}
+
+/* Botão de Limpar */
+.btn-clear {
+    width: 100%;
+    padding: 12px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--light-text);
+    background-color: var(--light-gray);
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.btn-clear:hover {
+    background-color: var(--border-color);
+    color: var(--dark-text);
+}
